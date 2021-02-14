@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dinesh.sawari">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MyPayment"></activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_YTaXBbWfJOxmmt" />
+
+        <activity
+            android:name=".OTPLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReviewCabBooking"
+            android:parentActivityName=".CabTypes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Payment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CabTypes"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CabBooking" />
+        <activity
+            android:name=".EditProfile"
+            android:parentActivityName=".Account"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Account"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".Bookings"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".OTP"
+            android:parentActivityName=".SignUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:parentActivityName=".StartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUp"
+            android:parentActivityName=".StartActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".StartActivity" />
+        <activity
+            android:name=".Splash"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "64618362194",
+    "firebase_url": "https://sawari-7818f-default-rtdb.firebaseio.com",
+    "project_id": "sawari-7818f",
+    "storage_bucket": "sawari-7818f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64618362194:android:6aad33594de057759cb68b",
+        "android_client_info": {
+          "package_name": "com.dinesh.sawari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64618362194-n8ur413evfjunci72u0006ol4r09i66q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJmTtTnrgKTmE7M9PnV1CE7dZAzAKV3W8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64618362194-n8ur413evfjunci72u0006ol4r09i66q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
