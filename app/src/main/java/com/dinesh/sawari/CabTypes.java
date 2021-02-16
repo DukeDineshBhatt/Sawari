@@ -90,7 +90,7 @@ public class CabTypes extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
 
         mCabsDatabase = FirebaseDatabase.getInstance().getReference().child("Cabs");
-        mCabsBookingRequest = FirebaseDatabase.getInstance().getReference().child("CabBookingRequest");
+        mCabsBookingRequest = FirebaseDatabase.getInstance().getReference().child("DriversCabBookings");
 
         cabs.setLayoutManager(linearLayoutManager);
 
@@ -102,7 +102,6 @@ public class CabTypes extends AppCompatActivity {
                 if (dataSnapshot.hasChild(routeString)) {
 
                     layout.setVisibility(View.GONE);
-
 
                     FirebaseRecyclerOptions<CabsModel> options =
                             new FirebaseRecyclerOptions.Builder<CabsModel>()

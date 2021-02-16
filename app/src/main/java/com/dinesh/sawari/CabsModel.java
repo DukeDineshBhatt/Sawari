@@ -6,9 +6,9 @@ public class CabsModel {
     }
 
     String name,type,ac;
-    long bags,seats,price;
+    String bags,seats,price;
 
-    public CabsModel(String name, String type, String ac, long bags, long seats, long price) {
+    public CabsModel(String name, String type, String ac, String bags, String seats, String price) {
         this.name = name;
         this.type = type;
         this.ac = ac;
@@ -33,19 +33,19 @@ public class CabsModel {
         this.type = type;
     }
 
-    public long getSeats() {
+    public String getSeats() {
         return seats;
     }
 
-    public void setSeats(long seats) {
+    public void setSeats(String seats) {
         this.seats = seats;
     }
 
-    public long getBags() {
+    public String getBags() {
         return bags;
     }
 
-    public void setBags(long bags) {
+    public void setBags(String bags) {
         this.bags = bags;
     }
 
@@ -57,11 +57,11 @@ public class CabsModel {
         this.ac = ac;
     }
 
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 }
