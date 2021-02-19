@@ -163,19 +163,20 @@ public class CabTypes extends AppCompatActivity {
             } else {
                 holder.ac.setText("Non-AC");
             }
-            holder.bags.setText(model.getBags() + " Bags");
+
+            if (model.getType().equals("Lite")) {
+                holder.bags.setText("2 Bags");
+            } else if (model.getType().equals("comfort")) {
+                holder.bags.setText("3 Bags");
+            } else if (model.getType().equals("comfort")) {
+                holder.bags.setText("4 Bags");
+            } else if (model.getType().equals("6 Plus")) {
+                holder.bags.setText("4 Bags");
+            }else if (model.getType().equals("6 Pro")) {
+                holder.bags.setText("4 Bags");
+            }
+
             holder.seats.setText(model.getSeats() + " seats");
-
-
-            /*if (!type.equals("Non-Veg")) {
-
-                Glide.with(holder.type_image.getContext()).load(R.drawable.veg).into(holder.type_image);
-
-            } else {
-
-                Glide.with(holder.type_image.getContext()).load(R.drawable.non_veg).into(holder.type_image);
-
-            }*/
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,6 +192,7 @@ public class CabTypes extends AppCompatActivity {
                     intent.putExtra("seats", String.valueOf(model.getSeats()));
                     intent.putExtra("bags", String.valueOf(model.getBags()));
                     intent.putExtra("ac", String.valueOf(model.getAc()));
+                    intent.putExtra("driver", String.valueOf(getRef(position).getKey().toString()));
 
                     startActivity(intent);
 

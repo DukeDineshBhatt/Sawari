@@ -32,14 +32,15 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
     Toolbar toolbar;
     TextView date, time, route, type, name, price, seats, bags, ac, five_percent, half_amount, full_amount, email, phonenumber, username;
 
-    String from, to, datetxt, timetxt, routeString, typetxt, nametxt, pricetxt, seatstxt, bagstxt, actxt, twentyPercentPrice;
+    String from, to, datetxt, timetxt, routeString, typetxt, nametxt, pricetxt, seatstxt, bagstxt, actxt, driver_intent;
     Button pay;
     String payment;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     String user_id;
-    DatabaseReference usersRef;
+    DatabaseReference usersRef, mDriverDatabase;
     FirebaseDatabase database;
+    String driver_id, driver_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,14 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
         seatstxt = intent.getStringExtra("seats");
         bagstxt = intent.getStringExtra("bags");
         actxt = intent.getStringExtra("ac");
+        driver_intent = intent.getStringExtra("driver");
+
+        database = FirebaseDatabase.getInstance();
+        usersRef = database.getReference("Users");
+
+        mDriverDatabase = database.getReference("Drivers");
+
+        //Toast.makeText(this, splitStr[2], Toast.LENGTH_LONG).show();
 
         date.setText(datetxt);
         route.setText(routeString);
@@ -108,8 +117,27 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
             ac.setText("Non-Ac");
 
         }
-        database = FirebaseDatabase.getInstance();
-        usersRef = database.getReference("Users");
+
+        String str = driver_intent;
+        str = str.replaceAll("[^a-zA-Z0-9]", " ");
+
+        String[] splitStr = str.split("\\s+");
+
+        driver_id = splitStr[2];
+
+        mDriverDatabase.child(driver_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                driver_token = dataSnapshot.child("token").getValue().toString();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         usersRef.child(user_id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,7 +158,6 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
 
                     email.setText("");
                 }
-
 
             }
 
@@ -163,14 +190,6 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
 
                 if (radioButton.getText().equals("Pay 5% now and rest after trip")) {
 
-                    /*Intent intent = new Intent(ReviewCabBooking.this, MyPayment.class);
-                    Bundle b = new Bundle();
-                    b.putInt("amount", Integer.parseInt(five_percent.getText().toString()));
-                    b.putString("email", email.getText().toString());
-                    b.putString("phonenumber", phonenumber.getText().toString());
-                    b.putString("username", username.getText().toString());
-                    intent.putExtras(b);
-                    startActivity(intent);*/
                     payment = five_percent.getText().toString();
 
                     if (username.getText().toString().isEmpty() || email.getText().toString().isEmpty()) {
@@ -181,7 +200,14 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
 
                     } else {
 
-                        startPayment();
+                        //startPayment();
+
+                        Intent intent = new Intent(ReviewCabBooking.this, CabBookingSuccess.class);
+                        Bundle b = new Bundle();
+
+                        b.putString("driver_token", driver_token);
+                        intent.putExtras(b);
+                        startActivity(intent);
                     }
 
 
@@ -201,14 +227,6 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
                         startPayment();
                     }
 
-                    /*Intent intent = new Intent(ReviewCabBooking.this, MyPayment.class);
-                    Bundle b = new Bundle();
-                    b.putInt("amount", Integer.parseInt(half_amount.getText().toString()));
-                    b.putString("email", email.getText().toString());
-                    b.putString("phonenumber", phonenumber.getText().toString());
-                    b.putString("username", username.getText().toString());
-                    intent.putExtras(b);
-                    startActivity(intent);*/
 
                 } else {
                     payment = full_amount.getText().toString();
@@ -220,17 +238,10 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
 
                     } else {
 
+
                         startPayment();
                     }
 
-                   /* Intent intent = new Intent(ReviewCabBooking.this, MyPayment.class);
-                    Bundle b = new Bundle();
-                    b.putInt("amount", Integer.parseInt(full_amount.getText().toString()));
-                    b.putString("email", email.getText().toString());
-                    b.putString("phonenumber", phonenumber.getText().toString());
-                    b.putString("username", username.getText().toString());
-                    intent.putExtras(b);
-                    startActivity(intent);*/
 
                 }
             }
@@ -274,6 +285,16 @@ public class ReviewCabBooking extends AppCompatActivity implements PaymentResult
         // payment successfull pay_DGU19rDsInjcF2
         Log.e("TAG", " payment successfull " + s.toString());
         Toast.makeText(this, "Payment successfully done! " + s, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(ReviewCabBooking.this, CabBookingSuccess.class);
+        Bundle b = new Bundle();
+        b.putInt("amount", Integer.parseInt(full_amount.getText().toString()));
+        b.putString("email", email.getText().toString());
+        b.putString("phonenumber", phonenumber.getText().toString());
+        b.putString("username", username.getText().toString());
+        b.putString("driver_token", driver_token);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 
     @Override

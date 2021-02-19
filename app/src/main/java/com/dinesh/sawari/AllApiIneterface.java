@@ -1,7 +1,14 @@
 package com.dinesh.sawari;
 
+import com.dinesh.sawari.NOtificationPOJO.DataBean;
+
+import com.dinesh.sawari.NOtificationPOJO.ResultBean;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -22,4 +29,12 @@ public interface AllApiIneterface {
             @Header("authorization") String authorization
 
     );
+
+    @Headers({"Authorization:key=AAAADwuN9VI:APA91bEQvTrHPurCbaVFb2_83xXfzAM11fcZciop5oVEuo4T5JDtc1fznIbSHUHZ63-IL0GbY5nFKdXRZgz--GiSuHbYJS4awvYTR6a-HTDZrl84TOs1qPmRwj2zxJskgWcSEWyx3m07",
+            "Content-Type:application/json"})
+    @POST("fcm/send")
+    Call<ResultBean> sendNotification(@Body DataBean requestNotificaton
+    );
+
+
 }

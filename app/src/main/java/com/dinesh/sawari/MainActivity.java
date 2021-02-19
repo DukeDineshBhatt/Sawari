@@ -101,9 +101,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         to = findViewById(R.id.to);
         search = findViewById(R.id.search);
 
-        String apiKey = getString(R.string.api_key);
-        Places.initialize(getApplicationContext(), apiKey);
-
         listItems = new ArrayList<String>();
 
         FirebaseApp.initializeApp(this);

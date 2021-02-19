@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyPayment"></activity>
+        <activity android:name=".CabBookingSuccess"></activity>
+        <activity android:name=".MyPayment" />
 
         <meta-data
             android:name="com.razorpay.ApiKey"
@@ -39,13 +40,12 @@
             android:name=".EditProfile"
             android:parentActivityName=".Account"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".Account"
-            android:screenOrientation="portrait"></activity>
-
-        <activity android:name=".Bookings"
-            android:screenOrientation="portrait"></activity>
-
+        <activity
+            android:name=".Account"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Bookings"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".OTP"
             android:parentActivityName=".SignUp"
@@ -69,6 +69,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
