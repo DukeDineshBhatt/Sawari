@@ -2,5 +2,6 @@
     <string name="app_name">Sawari</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm_txt">The booking details have been sent on your email and SMS. You will receive your driver details before your pick up time.For any queries contact our helpline. </string>
 
 </resources>

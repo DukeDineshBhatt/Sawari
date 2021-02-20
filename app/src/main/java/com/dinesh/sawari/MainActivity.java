@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -74,6 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     EditText to, from;
     Button search;
     int yy, mm, dd;
+    ProgressBar progressbar;
     String currentAM_PM = "pm";
     String selectedAM_PM = "pm";
     int currentHourIn12Format, selectedHour12, selectedMinutes, currentAmPm;
@@ -96,6 +98,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         from = findViewById(R.id.from);
         date = findViewById(R.id.date);
         time = findViewById(R.id.time);
+        progressbar = findViewById(R.id.progressbar);
         layout_date = findViewById(R.id.layout_date);
         layout_time = findViewById(R.id.layout_time);
         to = findViewById(R.id.to);
@@ -107,6 +110,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         mLocationsDatabase = database.getReference("Locations");
+
+        progressbar.setVisibility(View.VISIBLE);
 
         Calendar c = Calendar.getInstance();
         yy = c.get(Calendar.YEAR);
@@ -153,13 +158,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             }
         });
-
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
 
         this.layout_date.setOnClickListener(this);
@@ -272,6 +270,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         });
 
+        progressbar.setVisibility(View.GONE);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -349,6 +349,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         _birthYear = year;
         _month = monthOfYear;
@@ -410,6 +416,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         outState.putInt(SELECTED_ITEM, mSelectedItem);
         super.onSaveInstanceState(outState);
     }
+
     @Override
     public void onBackPressed() {
 

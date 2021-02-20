@@ -1,17 +1,27 @@
 package com.dinesh.sawari;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.dinesh.sawari.NOtificationPOJO.Data;
 import com.dinesh.sawari.NOtificationPOJO.DataBean;
 import com.dinesh.sawari.NOtificationPOJO.ResultBean;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.util.Random;
@@ -29,8 +39,12 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class CabBookingSuccess extends AppCompatActivity {
 
-    String token;
-    String baseurl;
+    String usernametxt,user_id;
+    String fromtxt, totxt, datetxt, timetxt, routeString, typetxt, nametxt, pricetxt, seatstxt, bagstxt, actxt, driver_token;
+    ImageView image;
+    TextView username,date, time, from, to, type, name, price, seats, bags, ac;
+    DatabaseReference usersRef;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +52,93 @@ public class CabBookingSuccess extends AppCompatActivity {
         setContentView(R.layout.activity_cab_booking_success);
 
         Intent intent = getIntent();
-        token = intent.getStringExtra("driver_token");
+        driver_token = intent.getStringExtra("driver_token");
+        datetxt = intent.getStringExtra("date");
+        timetxt = intent.getStringExtra("time");
+        typetxt = intent.getStringExtra("type");
+        nametxt = intent.getStringExtra("name");
+        pricetxt = intent.getStringExtra("price");
+        seatstxt = intent.getStringExtra("seats");
+        bagstxt = intent.getStringExtra("bags");
+        actxt = intent.getStringExtra("ac");
+        fromtxt = intent.getStringExtra("from");
+        totxt = intent.getStringExtra("to");
+
+        SharedPreferences shared = getSharedPreferences("myAppPrefs", MODE_PRIVATE);
+        user_id = (shared.getString("user_id", ""));
+
+        database = FirebaseDatabase.getInstance();
+        usersRef = database.getReference("Users");
+
+        image=findViewById(R.id.image);
+        username=findViewById(R.id.username);
+
+        date = findViewById(R.id.datetxt);
+        time = findViewById(R.id.time);
+        from = findViewById(R.id.from);
+        to = findViewById(R.id.to);
+        type = findViewById(R.id.type);
+        name = findViewById(R.id.name);
+        price = findViewById(R.id.price);
+        seats = findViewById(R.id.seats);
+        bags = findViewById(R.id.bags);
+        ac = findViewById(R.id.ac);
+
+        username.setText(usernametxt);
+
+        date.setText(datetxt);
+        time.setText(timetxt);
+        from.setText(fromtxt);
+        to.setText(totxt);
+        type.setText(typetxt);
+        name.setText(nametxt + " or Equivalent");
+        price.setText(pricetxt);
+        seats.setText(seatstxt + " seats");
+
+        if (typetxt.equals("Lite")) {
+            bags.setText("2 Bags");
+        } else if (typetxt.equals("comfort")) {
+            bags.setText("3 Bags");
+        } else if (typetxt.equals("comfort")) {
+            bags.setText("4 Bags");
+        } else if (typetxt.equals("6 Plus")) {
+            bags.setText("4 Bags");
+        } else if (typetxt.equals("6 Pro")) {
+            bags.setText("4 Bags");
+        }
+
+        if (actxt.equals("yes")) {
+            ac.setText("AC");
+
+        } else {
+
+            ac.setText("Non-Ac");
+
+        }
+
+        Glide.with(this)
+                .load("https://i.pinimg.com/originals/26/c1/28/26c12809de558824fd9ee3cc6a67b490.gif")
+                .into(image);
+
+        usersRef.child(user_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+               username.setText("Hey "+dataSnapshot.child("name").getValue().toString()+" !");
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //sendNotification();
+
+    }
+
+    public void sendNotification(){
 
         Application b = (Application) getApplicationContext();
 
@@ -64,7 +164,7 @@ public class CabBookingSuccess extends AppCompatActivity {
         body1.setIcon("https://firebasestorage.googleapis.com/v0/b/sawari-7818f.appspot.com/o/sawarilogo%20-%20Copy.png?alt=media&token=9a03230f-eb66-4fed-92c3-18703bbdbf65");
 
         DataBean body = new DataBean();
-        body.setTo(token);
+        body.setTo(driver_token);
         body.setData(body1);
 
         Call<ResultBean> call = cr.sendNotification(body);
@@ -93,6 +193,16 @@ public class CabBookingSuccess extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(CabBookingSuccess.this, MainActivity.class);
+        startActivity(intent);
+        finish();
 
 
     }

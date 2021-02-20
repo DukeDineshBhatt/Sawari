@@ -185,12 +185,14 @@ public class CabTypes extends AppCompatActivity {
                     Intent intent = new Intent(CabTypes.this, ReviewCabBooking.class);
 
                     intent.putExtra("route", routeString);
+                    intent.putExtra("from", from);
+                    intent.putExtra("to", to);
+                    intent.putExtra("time", timetxt);
                     intent.putExtra("date", date.getText().toString());
                     intent.putExtra("type", model.getType());
                     intent.putExtra("name", model.getName());
                     intent.putExtra("price", String.valueOf(model.getPrice()));
                     intent.putExtra("seats", String.valueOf(model.getSeats()));
-                    intent.putExtra("bags", String.valueOf(model.getBags()));
                     intent.putExtra("ac", String.valueOf(model.getAc()));
                     intent.putExtra("driver", String.valueOf(getRef(position).getKey().toString()));
 
