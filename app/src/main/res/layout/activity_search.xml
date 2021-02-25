@@ -21,10 +21,190 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="Find a ride"
+                    android:textSize="28sp"></TextView>
 
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/search_text_background"
+                    android:hint="Leaving from"
+                    android:paddingLeft="18dp"
+                    android:id="@+id/from"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
+
+                </EditText>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:id="@+id/to"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:background="@drawable/search_text_background"
+                    android:hint="Going to"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
+
+                </EditText>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="24dp"
+                    android:background="#cdcdcd">
+
+                </View>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="2"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/layout_date"
+                            android:layout_gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="2dp"
+                                android:src="@drawable/m_calendar"></ImageView>
+
+                            <TextView
+                                android:id="@+id/date"
+                                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:text="22-2-2021"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="16sp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/layout_time">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="2dp"
+                                android:src="@drawable/m_clock"></ImageView>
+
+                            <TextView
+                                android:id="@+id/time"
+                                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="11:00 am"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="16sp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:gravity="right|center_vertical"
+                            android:text="1 seat"
+                            android:id="@+id/seat"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp"></TextView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:background="#cdcdcd">
+
+                </View>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/button_bg_red"
+                    android:text="Search"
+                    android:id="@+id/search"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"></Button>
 
             </LinearLayout>
         </ScrollView>
+
+
 
     </LinearLayout>
 
@@ -32,7 +212,6 @@
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:visibility="gone"></ProgressBar>
 
     <include

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ public class Bookings extends BaseActivity {
     RecyclerView bookings;
     private LinearLayoutManager linearLayoutManager;
     myadapter adapter;
-    String user_id;
+    String user_id,driver_id;
     LinearLayout layout;
     DatabaseReference mMyCabBookings;
 
@@ -55,6 +56,8 @@ public class Bookings extends BaseActivity {
         mMyCabBookings.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                progressbar.setVisibility(View.VISIBLE);
 
                 if (dataSnapshot.hasChild("CabBooking")) {
 
@@ -94,6 +97,8 @@ public class Bookings extends BaseActivity {
         @Override
         protected void onBindViewHolder(@NonNull myadapter.myviewholder holder, final int position, @NonNull final CabBookingModel model) {
 
+            progressbar.setVisibility(View.VISIBLE);
+
             holder.setIsRecyclable(false);
 
             String str = getRef(position).getKey().toString();
@@ -103,34 +108,60 @@ public class Bookings extends BaseActivity {
 
             String from = splitStr[0];
             String to = splitStr[1];
+            driver_id = splitStr[2];
 
             holder.from.setText(from);
             holder.to.setText(to);
             holder.date.setText(model.getDate());
             holder.time.setText(model.getTime());
 
-            /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+            if (model.getStatus().equals("pending")) {
+                holder.status.setText("Pending");
+                holder.status_img.setBackgroundResource(R.drawable.wait);
+            } else if (model.getStatus().equals("accept")) {
+                holder.status_img.setBackgroundResource(R.drawable.green_tick);
+                holder.status.setText("Accepted");
+                holder.status.setTextColor(Color.parseColor("#228B22"));
+
+            } else if (model.getStatus().equals("decline")) {
+                holder.status_img.setBackgroundResource(R.drawable.cross);
+                holder.status.setText("Canceled");
+                holder.status.setTextColor(Color.parseColor("#C0C0C0"));
+
+            }
+            else if (model.getStatus().equals("confirm")) {
+                holder.status_img.setBackgroundResource(R.drawable.check_green);
+                holder.status.setText("Confirmed");
+                holder.status.setTextColor(Color.parseColor("#228B22"));
+
+            }
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(CabTypes.this, ReviewCabBooking.class);
+                    Intent intent = new Intent(Bookings.this, BookingDetails.class);
 
-                    intent.putExtra("route", routeString);
-                    intent.putExtra("from", from);
-                    intent.putExtra("to", to);
-                    intent.putExtra("date", date.getText().toString());
+                   // intent.putExtra("route", routeString);
+                    intent.putExtra("from", splitStr[0]);
+                    intent.putExtra("to", splitStr[1]);
+                    intent.putExtra("date", model.getDate());
+                    intent.putExtra("time", model.getTime());
                     intent.putExtra("type", model.getType());
                     intent.putExtra("name", model.getName());
-                    intent.putExtra("price", String.valueOf(model.getPrice()));
-                    intent.putExtra("seats", String.valueOf(model.getSeats()));
-                    intent.putExtra("ac", String.valueOf(model.getAc()));
-                    intent.putExtra("driver", String.valueOf(getRef(position).getKey().toString()));
+                    intent.putExtra("price", model.getPrice());
+                    intent.putExtra("seats", model.getSeats());
+                    intent.putExtra("ac", model.getAc());
+                    intent.putExtra("status", model.getStatus());
+                    intent.putExtra("driver_id", driver_id);
+                    intent.putExtra("booking_details", getRef(position).getKey().toString());
 
                     startActivity(intent);
 
                 }
-            });*/
+            });
 
+            progressbar.setVisibility(View.GONE);
         }
 
         @NonNull
@@ -142,8 +173,8 @@ public class Bookings extends BaseActivity {
 
         class myviewholder extends RecyclerView.ViewHolder {
 
-            TextView from,to,date,time;
-            ImageView image;
+            TextView from,to,date,time,status;
+            ImageView status_img;
 
 
             public myviewholder(@NonNull View itemView) {
@@ -153,6 +184,8 @@ public class Bookings extends BaseActivity {
                 to = (TextView) itemView.findViewById(R.id.to);
                 date = (TextView) itemView.findViewById(R.id.date);
                 time = (TextView) itemView.findViewById(R.id.time);
+                status = (TextView) itemView.findViewById(R.id.status);
+                status_img = (ImageView) itemView.findViewById(R.id.status_img);
 
 
             }

@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -14,6 +15,7 @@
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">#000000</item>
     </style>
+
 
 
 </resources>

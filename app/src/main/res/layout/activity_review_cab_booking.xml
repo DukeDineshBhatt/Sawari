@@ -108,8 +108,8 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/clock"></ImageView>
 
                         <TextView
@@ -524,15 +524,15 @@
                     android:id="@+id/pay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="24dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginRight="24dp"
                     android:layout_marginBottom="42dp"
-                    android:background="@drawable/button_bg"
+                    android:background="@drawable/button_bg_red"
                     android:foreground="?attr/selectableItemBackground"
-                    android:text="Pay to Confirm">
-
-                </Button>
+                    android:text="Confirm Booking"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"></Button>
 
             </LinearLayout>
         </ScrollView>

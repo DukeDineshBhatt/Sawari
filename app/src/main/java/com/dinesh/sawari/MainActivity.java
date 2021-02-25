@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -74,6 +75,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private int _birthYear;
     EditText to, from;
     Button search;
+    CardView find,give;
     int yy, mm, dd;
     ProgressBar progressbar;
     String currentAM_PM = "pm";
@@ -103,6 +105,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         layout_time = findViewById(R.id.layout_time);
         to = findViewById(R.id.to);
         search = findViewById(R.id.search);
+        find = findViewById(R.id.find);
+        give = findViewById(R.id.give);
 
         listItems = new ArrayList<String>();
 
@@ -161,6 +165,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
 
         this.layout_date.setOnClickListener(this);
+
+        find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this,Search.class);
+                startActivity(intent);
+
+            }
+        });
 
         from.setOnClickListener(new View.OnClickListener() {
             @Override

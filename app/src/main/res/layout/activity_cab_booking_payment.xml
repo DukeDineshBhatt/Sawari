@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CabBookingSuccess">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:theme="@style/ToolbarTheme"></androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="6dp"
+                    app:cardCornerRadius="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/radio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/twenty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:checked="true"
+                                android:text="Pay 5% now and rest after trip" />
+
+                            <RadioButton
+                                android:id="@+id/half"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:text="Pay 50% now and rest after trip" />
+
+                            <RadioButton
+                                android:id="@+id/full"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:text="Pay full amout now" />
+
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="24dp"
+                                android:gravity="right"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:gravity="right|center_vertical"
+                                    android:src="@drawable/rupee">
+
+                                </ImageView>
+
+                                <TextView
+                                    android:id="@+id/five_percent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:text="103"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"></TextView>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="24dp"
+                                android:gravity="right"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:gravity="right|center_vertical"
+                                    android:src="@drawable/rupee">
+
+                                </ImageView>
+
+                                <TextView
+                                    android:id="@+id/half_amount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:text="400"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"></TextView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="24dp"
+                                android:gravity="right"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:gravity="right|center_vertical"
+                                    android:src="@drawable/rupee">
+
+                                </ImageView>
+
+                                <TextView
+                                    android:id="@+id/full_amount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:gravity="right"
+                                    android:text="800"
+                                    android:textColor="#000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"></TextView>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginBottom="42dp"
+                    android:background="@drawable/button_bg_red"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="Pay to Confirm Booking"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"></Button>
+            </LinearLayout>
+
+
+
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

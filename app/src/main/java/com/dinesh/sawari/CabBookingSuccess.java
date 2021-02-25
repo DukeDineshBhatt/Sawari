@@ -2,6 +2,7 @@ package com.dinesh.sawari;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 import android.content.Intent;
@@ -39,17 +40,35 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class CabBookingSuccess extends AppCompatActivity {
 
-    String usernametxt,user_id;
+    String usernametxt,user_id,driver_intent;
     String fromtxt, totxt, datetxt, timetxt, routeString, typetxt, nametxt, pricetxt, seatstxt, bagstxt, actxt, driver_token;
     ImageView image;
-    TextView username,date, time, from, to, type, name, price, seats, bags, ac;
+    TextView username,date, time, from, to, type, name, price, seats, bags, ac,status_txt;
     DatabaseReference usersRef;
     FirebaseDatabase database;
+    Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cab_booking_success);
+
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Booking Details");
+
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         Intent intent = getIntent();
         driver_token = intent.getStringExtra("driver_token");
@@ -63,6 +82,7 @@ public class CabBookingSuccess extends AppCompatActivity {
         actxt = intent.getStringExtra("ac");
         fromtxt = intent.getStringExtra("from");
         totxt = intent.getStringExtra("to");
+        driver_intent = intent.getStringExtra("driver_intent");
 
         SharedPreferences shared = getSharedPreferences("myAppPrefs", MODE_PRIVATE);
         user_id = (shared.getString("user_id", ""));
@@ -83,6 +103,7 @@ public class CabBookingSuccess extends AppCompatActivity {
         seats = findViewById(R.id.seats);
         bags = findViewById(R.id.bags);
         ac = findViewById(R.id.ac);
+        status_txt = findViewById(R.id.status_txt);
 
         username.setText(usernametxt);
 
@@ -115,6 +136,12 @@ public class CabBookingSuccess extends AppCompatActivity {
             ac.setText("Non-Ac");
 
         }
+
+
+        Toast.makeText(this, ""+driver_intent, Toast.LENGTH_LONG).show();
+
+
+
 
         Glide.with(this)
                 .load("https://i.pinimg.com/originals/26/c1/28/26c12809de558824fd9ee3cc6a67b490.gif")
@@ -200,7 +227,7 @@ public class CabBookingSuccess extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Intent intent = new Intent(CabBookingSuccess.this, MainActivity.class);
+        Intent intent = new Intent(CabBookingSuccess.this, Bookings.class);
         startActivity(intent);
         finish();
 

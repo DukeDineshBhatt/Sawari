@@ -2,6 +2,9 @@
     <string name="app_name">Sawari</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="confirm_txt">The booking details have been sent on your email and SMS. You will receive your driver details before your pick up time.For any queries contact our helpline. </string>
+    <string name="confirm_txt">The booking details have been sent on your email and SMS. You will receive your driver details before your pick up time. For any queries contact our helpline. </string>
 
+    <string name="txt"> Your booking confirmation details will be updated shortly. You will receive a  notification and SMS once booking will confirmed.For any queries contact our helpline.</string>
+    <string name="pending_txt">Kindly wait for sometime. Your booking details will be updated shortly. You will receive a  notification when it will be processed. For any queries contact our helpline.</string>
+    <string name="payment_txt">Your Booking is Processed. Make payment to confirm Booking and receive your Booking confirmation details on your Number and email. For any queries contact our helpline.</string>
 </resources>

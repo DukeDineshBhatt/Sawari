@@ -11,6 +11,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:theme="@style/ToolbarTheme"></androidx.appcompat.widget.Toolbar>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,11 +35,244 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/image"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"></ImageView>
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/check_green">
+
+                                </ImageView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="Booked">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="We have received your Booking"
+                                        android:textColor="#000">
+
+                                    </TextView>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="62dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="9dp"
+                                android:background="#43A047"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/processing_img"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/circle">
+
+                                </ImageView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/processing"
+                                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="Processing">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:id="@+id/processing_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="Your booking is processing"
+                                        android:textColor="#000">
+
+                                    </TextView>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/processing_line"
+                                android:layout_width="3dp"
+                                android:layout_height="62dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="9dp"
+                                android:background="#cdcdcd"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/payment_img"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/circle">
+
+                                </ImageView>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/payment"
+                                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="Payment"
+                                        android:textColor="#cdcdcd">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:id="@+id/payment_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="18dp"
+                                        android:text="Make payment to confirm your Booking"
+                                        android:textColor="#cdcdcd">
+
+                                    </TextView>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/payment_line"
+                                android:layout_width="3dp"
+                                android:layout_height="62dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="9dp"
+                                android:background="#cdcdcd"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="12dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/confrm_img"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/circle">
+
+                            </ImageView>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/confrm"
+                                    style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="18dp"
+                                    android:text="Booking Confirmed"
+                                    android:textColor="#cdcdcd">
+
+                                </TextView>
+
+                                <TextView
+                                    android:id="@+id/confrm_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="18dp"
+                                    android:text="Your booking is Confirmed"
+                                    android:textColor="#cdcdcd">
+
+                                </TextView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="#cdcdcd"></View>
 
                     <TextView
                         android:id="@+id/username"
@@ -40,29 +280,74 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="22dp"
+                        android:layout_marginTop="12dp"
                         android:text="Hey !"
                         android:textColor="#000"
                         android:textSize="22sp"></TextView>
 
-                    <TextView
-                        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="6dp"
-                        android:text="Your Booking is Confirmed."
-                        android:textColor="#000"></TextView>
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/status_img"
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="6dp">
+
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/status_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text=""
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="20sp"
+                            android:textStyle="bold">
+
+                        </TextView>
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="12dp"
+                        android:visibility="gone"
+                        android:background="@drawable/button_bg_red"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:text="Pay to Confirm Booking"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"></Button>
 
                     <TextView
+                        android:id="@+id/des_txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="24dp"
                         android:layout_marginRight="24dp"
                         android:gravity="center"
-                        android:text="@string/confirm_txt"></TextView>
+                        android:text="@string/pending_txt"></TextView>
+
+                    <ImageView
+                        android:id="@+id/call_us"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/call"></ImageView>
 
                     <View
                         android:layout_width="match_parent"
@@ -191,12 +476,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
+                    android:layout_marginBottom="32dp"
                     android:background="@drawable/cabs_bg_round"
                     android:orientation="vertical"
                     android:paddingLeft="9dp"
                     android:paddingTop="6dp"
                     android:paddingRight="9dp"
-                    android:layout_marginBottom="32dp"
                     android:paddingBottom="6dp">
 
                     <LinearLayout
@@ -337,6 +622,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -345,11 +631,17 @@
                     android:layout_marginRight="12dp"
                     android:layout_marginBottom="24dp"
                     android:background="#cdcdcd"></View>
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"></ImageView>
+
             </LinearLayout>
 
         </ScrollView>
 
     </LinearLayout>
-
 
 </RelativeLayout>

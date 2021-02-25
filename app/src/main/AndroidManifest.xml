@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dinesh.sawari">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,8 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Search"></activity>
-        <activity android:name=".CabBookingSuccess" />
+        <activity android:name=".CabBookingPayment"></activity>
+        <activity android:name=".BookingDetails" />
+        <activity android:name=".CountActivity" />
+        <activity
+            android:name=".Search"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CabBookingSuccess"
+            android:parentActivityName=".Bookings"
+            android:screenOrientation="portrait" />
         <activity android:name=".MyPayment" />
 
         <meta-data
